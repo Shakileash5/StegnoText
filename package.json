@@ -1,0 +1,25 @@
+{
+  "name": "stegnography",
+  "version": "1.0.0",
+  "description": "An application to hide text in text.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shakileash5/StegnoText.git"
+  },
+  "author": "Shakileash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shakileash5/StegnoText/issues"
+  },
+  "homepage": "https://github.com/Shakileash5/StegnoText#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
