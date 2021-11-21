@@ -1,31 +1,28 @@
-# Foobar
+# StegnoText
 
-Foobar is a Python library for dealing with word pluralization.
+StegnoText is a node.js application server that provides a simple way to hide text in text. To hide secrets inside text by compressing and encrypting the secret before cloaking it with special unicode invisible characters. It can be used to safely watermark strings, invisible scripts on webpages, texts on social media or for any other covert communication.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager npm.
 
 ```bash
-pip install foobar
+npm install
 ```
 
 ## Usage
 
-```python
-import foobar
+Two essential methods are provided:
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=SHAKILEASH&show_icons=true&theme=gotham)](https://github.com/SHAKILEASH)
+- `hideSecret`: hides a secret in a text. It returns a new text with the secret hidden. 
+    - @params: secretMsg - the secret message to hide
+    - @params: password - the password to encrypt the secret
+    - @params: coverMsg - the text to hide the secret in
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SHAKILEASH)](https://github.com/anuraghazra/github-readme-stats)
-
-[![willianrod's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Shakileash)](https://github.com/anuraghazra/github-readme-stats)
+- `revealSecret`: reveals a secret in a text. It returns a new text with the secret revealed.
+    - @params: password - the password to decrypt the secret
+    - @params: coverMsg - the text to reveal the secret in.
+ 
 
 
 ## Contributing

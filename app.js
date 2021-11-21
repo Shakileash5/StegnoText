@@ -8,9 +8,9 @@ app.get("/",(req,res)=>{
     res.json(["iam","also me","yea yea its me again"]);
 });
 
-
+// TODO: Convert this to a POST request and use the body to get the data
 // create route for hiding the secrete message in text
-app.get("/hideSecrete",(req,res)=>{
+app.get("/hideSecret",(req,res)=>{
     let secretMsg; // msg to be hidden
     let password; // password to retrive encrypt and decrypt msg
     let coverMsg; // cover in which secret msg is hidden
@@ -51,7 +51,7 @@ app.get("/hideSecrete",(req,res)=>{
 });
 
 // create route for retrieving the secrete message from text
-app.get("/revealMsg",(req,res)=>{
+app.get("/revealSecret",(req,res)=>{
 
     let password; // password to retrive encrypt and decrypt msg
     let coverMsg; // cover in which secret msg is hidden
