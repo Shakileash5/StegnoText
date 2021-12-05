@@ -13,6 +13,7 @@ function showSnackbar(msg,flag) {
     var x = document.getElementById("snackbar");
     x.className = "show";
     x.style.display = "block";
+
     document.getElementById("snackbar").innerHTML = msg;
     if(flag){
         document.getElementById("snackbar").style.color = "green";
@@ -25,7 +26,7 @@ function showSnackbar(msg,flag) {
 }
 
 /*
- * This function handles sending request to hide data and then reveal the final cover msg with data.
+ * This function handles sending request to hide data inside cover msg .
  *
  */
 const hideSecret = ()=>{
@@ -68,19 +69,33 @@ const hideSecret = ()=>{
     return false;
 }
 
-
+/*
+ * This function handles sending request to reveal the final cover msg with data.
+ *
+ */
 function showSecret(){
 
-    let coverMsg = document.getElementById("coverMessage").value ; // cover in which secret msg is hidden
-    let password = document.getElementById("passwordToHide").value ; // password to retrive encrypt and decrypt msg 
+    let coverMsg = document.getElementById("cloakedMsg").value ; // cover in which secret msg is hidden
+    let password = document.getElementById("passwordToReveal").value ; // password to retrive encrypt and decrypt msg 
 
     if(coverMsg.value == "" || password.value == ""){ // if any of the field is empty
         alert("Please enter the message and password");
         return;
     }
 
+    //coverMsg = encodeURIComponent(coverMsg);
+    let params = "?coverMsg="+coverMsg+"&password="+password;
+    console.log("Inside the show secret function to sedd" + coverMsg);
+    let postHeader = {
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({password: password, coverMsg: coverMsg})
+    }
     // send request to hide data
-    fetch("http://127.0.0.1:3000/revealSecret?password="+password+"&coverMsg="+coverMsg)
+    fetch("http://127.0.0.1:3000/revealSecret"+params)
     .then(function(res){ return res.json(); })
     .then(function(data){
         console.log(data);

@@ -59,6 +59,24 @@ app.post("/hideSecret",(req,res)=>{
 
 });
 
+
+const revealSecret = (password,coverMsg)=>{
+    let secretMsg;
+    console.log(password+" "+coverMsg);
+    // retrieve secret msg from cover msg
+    try{
+        secretMsg = stegcloak.reveal(coverMsg, password);
+    }
+    catch(err){
+        
+        console.log(err);
+        return;
+    }
+    
+    console.log("The request to /revealMsg is serverd : ",secretMsg);
+    return secretMsg;
+}
+
 // create route for retrieving the secrete message from text
 app.get("/revealSecret",(req,res)=>{
 
@@ -69,13 +87,14 @@ app.get("/revealSecret",(req,res)=>{
     try{
         password = req.query.password;
         coverMsg = req.query.coverMsg;
+        //coverMsg = encodeURIComponent(coverMsg);
     }
     catch(err){
         res.json({
             status: 406, 
             error: "missing args"
         });
-        console.log(err);
+        console.log("Errors:::" + err);
         return;
     }
 
