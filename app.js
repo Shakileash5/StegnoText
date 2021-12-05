@@ -3,10 +3,12 @@ const stegcloak = new StegCloak(true, false);  // Initializes with encryption tr
 
 var express = require("express");
 var bodyParser = require('body-parser');
+var cors = require('cors')
 var app = express(); // create server object
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/",(req,res)=>{
     res.json(["This is StegnoText Server"]);
