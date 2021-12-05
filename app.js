@@ -1,25 +1,32 @@
-const StegCloak = require('stegcloak');
+const StegCloak = require('./stegcloak/stegcloak.js');
 const stegcloak = new StegCloak(true, false);  // Initializes with encryption true and hmac false for hiding
 
 var express = require("express");
+var bodyParser = require('body-parser');
 var app = express(); // create server object
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 app.get("/",(req,res)=>{
-    res.json(["iam","also me","yea yea its me again"]);
+    res.json(["This is StegnoText Server"]);
 });
 
-// TODO: Convert this to a POST request and use the body to get the data
 // create route for hiding the secrete message in text
-app.get("/hideSecret",(req,res)=>{
+app.post("/hideSecret",(req,res)=>{
     let secretMsg; // msg to be hidden
     let password; // password to retrive encrypt and decrypt msg
     let coverMsg; // cover in which secret msg is hidden
+    console.log(req.body);
+    console.log(req.query);
 
-    // get args from request
+    // get data from body of request
+
+
     try{
-        secretMsg = req.query.secretMsg;
-        password = req.query.password;
-        coverMsg = req.query.coverMsg;
+        secretMsg = req.body.secretMsg;
+        password = req.body.password;
+        coverMsg = req.body.coverMsg;
     }
     catch(err){
         res.json({ 
