@@ -1,7 +1,23 @@
 var ad = document.getElementById("adv1")
 ad.addEventListener("click", () => {
     document.getElementById('option').classList.toggle("trans")
-})
+});
+
+function showSnackbar(flag) {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    x.style.display = "block";
+    if(flag){
+        document.getElementById("snackbar").innerHTML = "The message is hidden successfully";
+        document.getElementById("snackbar").style.color = "green";
+    }
+    else{
+        document.getElementById("snackbar").innerHTML = "There is some error in hiding the message";
+        document.getElementById("snackbar").style.color = "red";
+    }
+    
+    setTimeout(function(){ x.className = x.style.display="none"; }, 3000);
+}
 
 /*
  * This function handles sending request to hide data and then reveal the final cover msg with data.
@@ -33,16 +49,11 @@ const hideSecret = ()=>{
     .then(function(data){
         console.log(data);
         document.getElementById("coverMessage").value = data.data;
-        document.getElementById("status").style.display = "block";
-        document.getElementById("status").innerHTML = "The message is hidden successfully";
-        document.getElementById("status").style.color = "green";
-
+        showSnackbar(1);
     })
     .catch(function(res){ 
         console.log(res);
-        document.getElementById("status").value = "There is some error in hiding the message";
-        document.getElementById("status").style.display = "block";
-        document.getElementById("status").style.color = "red";
+        showSnackbar(0);
     })
     .finally(function(){
         document.getElementById("SecretMsgToHide").value = "";
