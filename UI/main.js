@@ -3,16 +3,21 @@ ad.addEventListener("click", () => {
     document.getElementById('option').classList.toggle("trans")
 });
 
-function showSnackbar(flag) {
+/*
+ * This function is responsible for hiding and revealing the snackbar message.
+ * 
+ * @param {string} msg - message to be shown in the snackbar
+ * @param {boolean} flag - flag to show success or failure message
+ */
+function showSnackbar(msg,flag) {
     var x = document.getElementById("snackbar");
     x.className = "show";
     x.style.display = "block";
+    document.getElementById("snackbar").innerHTML = msg;
     if(flag){
-        document.getElementById("snackbar").innerHTML = "The message is hidden successfully";
         document.getElementById("snackbar").style.color = "green";
     }
     else{
-        document.getElementById("snackbar").innerHTML = "There is some error in hiding the message";
         document.getElementById("snackbar").style.color = "red";
     }
     
@@ -49,11 +54,11 @@ const hideSecret = ()=>{
     .then(function(data){
         console.log(data);
         document.getElementById("coverMessage").value = data.data;
-        showSnackbar(1);
+        showSnackbar("The message is hidden successfully",1);
     })
     .catch(function(res){ 
         console.log(res);
-        showSnackbar(0);
+        showSnackbar("There is some error in hiding the message",0);
     })
     .finally(function(){
         document.getElementById("SecretMsgToHide").value = "";
@@ -64,3 +69,31 @@ const hideSecret = ()=>{
 }
 
 
+function showSecret(){
+
+    let coverMsg = document.getElementById("coverMessage").value ; // cover in which secret msg is hidden
+    let password = document.getElementById("passwordToHide").value ; // password to retrive encrypt and decrypt msg 
+
+    if(coverMsg.value == "" || password.value == ""){ // if any of the field is empty
+        alert("Please enter the message and password");
+        return;
+    }
+
+    // send request to hide data
+    fetch("http://127.0.0.1:3000/revealSecret?password="+password+"&coverMsg="+coverMsg)
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+        console.log(data);
+        document.getElementById("Secret").innerHTML = data.data;
+        showSnackbar("The message is revealed successfully",1);
+    })
+    .catch(function(res){
+        console.log(res);
+        showSnackbar("There is some error in revealing the message",0);
+    })
+    .finally(function(){
+        document.getElementById("coverMessage").value = "";
+        document.getElementById("passwordToHide").value = "";
+    });
+
+}

@@ -80,6 +80,7 @@ app.get("/revealSecret",(req,res)=>{
     }
 
     let secretMsg;
+    console.log(password+" "+coverMsg);
     // retrieve secret msg from cover msg
     try{
         secretMsg = stegcloak.reveal(coverMsg, password);
@@ -93,8 +94,8 @@ app.get("/revealSecret",(req,res)=>{
         return;
     }
     
-    res.json({status:200,msg:"the secret msg is retrieved",data:secretMsg});
     console.log("The request to /revealMsg is serverd : ",secretMsg);
+    res.json({status:200,msg:"the secret msg is retrieved",data:secretMsg});
     return;
 
 });

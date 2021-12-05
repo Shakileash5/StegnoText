@@ -112,7 +112,7 @@ This is a confidential message.</textarea
             <label class="label-input100 m-l-2" for="pass">PASSWORD</label>
             <div class="wrap-input100">
               <input
-                id="pass"
+                id="passwordToHide"
                 class="input100"
                 type="text"
                 name="first-name"
@@ -124,7 +124,7 @@ This is a confidential message.</textarea
             >
             <div class="wrap-input100">
               <textarea
-                id="mess"
+                id="coverMessage"
                 class="input100"
                 name="mess"
                 placeholder="Please enter your Encrypted Message"
@@ -132,7 +132,7 @@ This is a confidential message.</textarea
               ><span class="focus-input100"></span>
             </div>
             <div class="container-contact100-form-btn">
-              <button class="contact100-form-btn">
+              <button class="contact100-form-btn" type="button" onclick="showSecret()">
                 <span
                   >Get Secret<i class="zmdi zmdi-arrow-right m-l-8"></i
                 ></span>
@@ -140,7 +140,7 @@ This is a confidential message.</textarea
             </div>
             <label class="label-input100 m-l-2 m-t-10">Your Secret</label>
             <p class="p-input100 text-center m-t-10 wraptext">
-              <i> Secret </i>
+              <i id="Secret" > Secret </i>
             </p>
           </form>
         </div>
