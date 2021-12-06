@@ -1,154 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="util.css">
-    <link rel="stylesheet" href="material-font.css">
-    <title>StegnoText</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <div id="root">
-      <div class="container-contact100">
-        <div class="wrap-contact100" style="position: relative">
-          <form class="contact100-form validate-form">
-            <div class="" style="width: 100%; text-align: center">
-              <div>
-                <span class="p-t-15 p-l-10 steg">StegnoText</span>
-              </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="util.css" />
+  <link rel="stylesheet" href="material-font.css" />
+  <title>StegnoText</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <div class="container-contact100">
+      <div class="wrap-contact100" style="position: relative">
+        <form class="contact100-form validate-form">
+          <div class="" style="width: 100%; text-align: center">
+            <div>
+              <span class="p-t-15 p-l-10 steg">StegnoText</span>
             </div>
-            <p class="p-input100 text-center m-t-35">HIDE</p>
-            <hr class="hr-input100 m-t-2" />
-            <div class="rs1 next">
-              <label class="fs-18 text-center p-b-11" for="first-name"
-                >Secret
-              </label>
-              <div class="wrap-input100 validate-input alert-validate">
-                <input
-                  id="SecretMsgToHide"
-                  class="input100 text-center"
-                  type="text"
-                  name="first-name"
-                  placeholder="Attack at 2:00 PM!!"
-                /><span class="focus-input100"></span
-                ><span class="btn-hide-validate"></span>
-              </div>
+          </div>
+          <p class="p-input100 text-center m-t-35">HIDE</p>
+          <hr class="hr-input100 m-t-2" />
+          <div class="rs1 next">
+            <label class="fs-18 text-center p-b-11" for="first-name">Secret
+            </label>
+            <div class="wrap-input100 validate-input alert-validate">
+              <input id="SecretMsgToHide" class="input100 text-center" type="text" name="first-name"
+                placeholder="Attack at 2:00 PM!!" /><span class="focus-input100"></span><span
+                class="btn-hide-validate"></span>
             </div>
-            <div class="rs1 next">
-              <label class="fs-18 text-center p-b-11" for="password"
-                >PASSWORD</label
-              >
-              <div class="wrap-input100 validate-input">
-                <input
-                  id="passwordToHide"
-                  class="input100 text-center"
-                  type="password"
-                  required=""
-                  name="password"
-                  placeholder="Password"
-                /><span class="focus-input100"></span>
-              </div>
-            </div>
-            <div id="adv1" style="cursor: pointer; text-align: left; display:none">
-              <img
-                class="m-b-5"
-                src="cog.svg"
-                alt="Extra"
-                style="width: 20px"
-              /><span
-                class="m-t-15"
-                id="adv"
-                style="font-size: 18px; font-family: Raleway-SemiBold"
-              >
-                Advanced
-              </span>
-            </div>
-            <div class="flex-sa label-input100 cus" id="option">
-              <div class="m-t-15">
-                <label class="m-r-10" for="myCheck" style="float: left"
-                  >ENCRYPTED</label
-                ><input
-                  class="m-t-5"
-                  type="checkbox"
-                  id="myCheck"
-                  checked=""
-                  style="float: left; width: 18px; height: 18px"
-                />
-              </div>
-              <div class="m-t-15">
-                <label class="m-r-10" for="myCheck1" style="float: left"
-                  >HMAC</label
-                ><input
-                  class="m-t-5"
-                  type="checkbox"
-                  id="HMAC"
-                  style="float: left; width: 18px; height: 18px"
-                />
-              </div>
-            </div>
-            <label class="label-input100 m-t-10" for="message">MESSAGE</label>
+          </div>
+          <div class="rs1 next">
+            <label class="fs-18 text-center p-b-11" for="password">PASSWORD</label>
             <div class="wrap-input100 validate-input">
-              <textarea
-                id="coverMessage"
-                class="input100"
-                name="message"
-                placeholder="This is a confidential message."
-              >
-This is a confidential message.</textarea
-              ><span class="focus-input100"></span>
+              <input id="passwordToHide" class="input100 text-center" type="password" required="" name="password"
+                placeholder="Password" /><span class="focus-input100"></span>
             </div>
-            
-            <div class="container-contact100-form-btn m-b-25">
-              <button class="contact100-form-btn validate-form" type="button" onclick="hideSecret()">
-                <span>Hide<i class="zmdi zmdi-arrow-right m-l-8"></i></span>
-              </button>
+          </div>
+          <div id="adv1" style="cursor: pointer; text-align: left; display: none">
+            <img class="m-b-5" src="cog.svg" alt="Extra" style="width: 20px" /><span class="m-t-15" id="adv"
+              style="font-size: 18px; font-family: Raleway-SemiBold">
+              Advanced
+            </span>
+          </div>
+          <div class="flex-sa label-input100 cus" id="option">
+            <div class="m-t-15">
+              <label class="m-r-10" for="myCheck" style="float: left">ENCRYPTED</label><input class="m-t-5"
+                type="checkbox" id="myCheck" checked="" style="float: left; width: 18px; height: 18px" />
             </div>
-            <p class="p-input100 text-center m-t-35">REVEAL</p>
-            <hr class="hr-input100 m-t-2" />
-            <div class="label-input100 flex-sa"></div>
-            <label class="label-input100 m-l-2" for="pass">PASSWORD</label>
-            <div class="wrap-input100">
-              <input
-                id="passwordToReveal"
-                class="input100"
-                type="text"
-                name="first-name"
-                placeholder="Password"
-              /><span class="focus-input100"></span>
+            <div class="m-t-15">
+              <label class="m-r-10" for="myCheck1" style="float: left">HMAC</label><input class="m-t-5" type="checkbox"
+                id="HMAC" style="float: left; width: 18px; height: 18px" />
             </div>
-            <label class="label-input100 m-l-2" for="mess"
-              >Invisible Message *</label
-            >
-            <div class="wrap-input100">
-              <textarea
-                id="cloakedMsg"
-                class="input100"
-                name="cloakedMsg"
-                placeholder="Please enter your Encrypted Message"
-              ></textarea
-              ><span class="focus-input100"></span>
-            </div>
-            <div class="container-contact100-form-btn">
-              <button class="contact100-form-btn" type="button" onclick="showSecret()">
-                <span
-                  >Get Secret<i class="zmdi zmdi-arrow-right m-l-8"></i
-                ></span>
-              </button>
-            </div>
-            <label class="label-input100 m-l-2 m-t-10">Your Secret</label>
-            <p class="p-input100 text-center m-t-10 wraptext">
-              <i id="Secret" > Secret </i>
-            </p>
-          </form>
-        </div>
+          </div>
+          <label class="label-input100 m-t-10" for="message">MESSAGE</label>
+          <div class="wrap-input100 validate-input">
+            <textarea id="coverMessage" class="input100" name="message" placeholder="This is a confidential message.">
+This is a confidential message.</textarea><span class="focus-input100"></span>
+          </div>
+
+          <div class="container-contact100-form-btn m-b-25">
+            <button class="contact100-form-btn validate-form" type="button" onclick="hideSecret()">
+              <span>Hide<i class="zmdi zmdi-arrow-right m-l-8"></i></span>
+            </button>
+          </div>
+          <p class="p-input100 text-center m-t-35">REVEAL</p>
+          <hr class="hr-input100 m-t-2" />
+          <div class="label-input100 flex-sa"></div>
+          <label class="label-input100 m-l-2" for="pass">PASSWORD</label>
+          <div class="wrap-input100">
+            <input id="passwordToReveal" class="input100" type="text" name="first-name" placeholder="Password" /><span
+              class="focus-input100"></span>
+          </div>
+          <label class="label-input100 m-l-2" for="mess">Invisible Message *</label>
+          <div class="wrap-input100">
+            <textarea id="cloakedMsg" class="input100" name="cloakedMsg"
+              placeholder="Please enter your Encrypted Message"></textarea><span class="focus-input100"></span>
+          </div>
+          <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn" type="button" onclick="showSecret()">
+              <span>Get Secret<i class="zmdi zmdi-arrow-right m-l-8"></i></span>
+            </button>
+          </div>
+          <label class="label-input100 m-l-2 m-t-10">Your Secret</label>
+          <p class="p-input100 text-center m-t-10 wraptext">
+            <i id="Secret"> Secret </i>
+          </p>
+        </form>
       </div>
     </div>
-    <span>
-      <p id="snackbar" style="display:none ; z-index: 10; border-radius: 15;"> CCC</p>
-    </span>
-    <script src="main.js"></script>
-  </body>
+  </div>
+  <span>
+    <p id="snackbar" style="display: none; z-index: 10; border-radius: 15">
+      CCC
+    </p>
+  </span>
+  <script src="main.js"></script>
+</body>
+
 </html>
