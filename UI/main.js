@@ -83,7 +83,6 @@ function showSecret(){
         return;
     }
 
-    //coverMsg = encodeURIComponent(coverMsg);
     let params = "?coverMsg="+coverMsg+"&password="+password;
     console.log("Inside the show secret function to sedd" + coverMsg);
     let postHeader = {
